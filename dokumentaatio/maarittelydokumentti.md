@@ -1,5 +1,5 @@
 Ohjelma kirjoitetaan Javalla Maven projketina.
-Ohjelma vertaa erilaisten algoritmien tehoa reitin löytämisesssä kahden pisteen välillä ruudukossa ja mallintaa niitten toimintaa graaffisesti käyttäen Java Swingiä.
+Ohjelma vertaa erilaisten algoritmien tehoa reitin löytämisesssä kahden pisteen välillä 2d ruudukossa ja mallintaa niitten toimintaa graaffisesti käyttäen Java Swingiä. Käyttäjä pystyy luomaan kartan ohjelmiston kautta hiiren avulla. Hiiren oikealla näppäimellä voidaan poistaa ja lisätä esteitä ja vasemmalla painikkeella (yhdesti) asettaa aloitus piste ja (kahdesti) asettaa lopetus piste. Karttoja ei näillä näkymin voi tuoda tiedosto muodossa, mutta jos aikaa jää yritetään tätä toiminnallisuutta kehittää.
 Algoritmit joita käytetään ovat A* Dijkstra ja BFS (Varmasti myös monia muita tai haastavampia algoritmeja, mutta näillä aloitetaan). Käyttäjä pystyy valitsemaan aloitus pisteen algoritmille, sekä lisäämään ruudukkoon esteitä, joiden
 läpi reitti ei saa kulkea. Ohjelma ilmoittaa millä algoritmilla kyseisessä tapauksessa saataisiin nopein aika.
 Työssä käytetään ainakin Stackkia ja Listiä  algoritmien tekemiseen ja grafiikka puolen esitys viiveen saavuttamiseksi.
