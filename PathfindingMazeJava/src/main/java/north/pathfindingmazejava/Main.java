@@ -5,6 +5,8 @@
  */
 package north.pathfindingmazejava;
 
+import north.pathfindingmazejava.logic.Maze;
+
 /**
  *
  * @author northernpike
@@ -12,6 +14,9 @@ package north.pathfindingmazejava;
 public class Main {
         public static void main(String[] args) {
             System.out.println("Hello PitTest");
+            Maze maze = new Maze();
+            maze.start();
+            maze.getGrid().gridInitializeTiles();
         }
     
 }
