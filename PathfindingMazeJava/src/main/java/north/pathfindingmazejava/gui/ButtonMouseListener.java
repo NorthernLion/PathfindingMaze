@@ -18,13 +18,14 @@ public class ButtonMouseListener implements MouseListener {
     private JButton[][] squares;
     private Grid grid;
     private JButton button;
-    private Tile[][] board;
+    private Tile[][] maze;
 
     ButtonMouseListener(int y, int x, JButton[][] squares, Grid grid) {
         this.y = y;
         this.x = x;
         this.squares = squares;
         this.grid = grid;
+        this.maze = grid.getGrid();
         this.button = squares[y][x];
     }
 
@@ -39,8 +40,9 @@ public class ButtonMouseListener implements MouseListener {
     @Override
     public void mousePressed(MouseEvent me
     ) {
-        Tile current = board[y][x];
+        Tile current = maze[y][x];
         if (SwingUtilities.isLeftMouseButton(me)) {
+            current.setBlocked(false);
             if (current.isStart()) {
                 current.setEnd(true);
                 current.setStart(false);
@@ -53,13 +55,16 @@ public class ButtonMouseListener implements MouseListener {
                 current.setStart(true);
                 button.setText("S");
             }
-            handleButton(y, x);
         } else if (SwingUtilities.isRightMouseButton(me)) {
+            current.setEnd(false);
+            current.setStart(false);
             if (current.isBlocked()) {
                 current.setBlocked(false);
-                button.setText("B");
+                button.setText(" ");
+            } else {
+                current.setBlocked(true);
+                button.setText("B");                
             }
-
         }
     }
 

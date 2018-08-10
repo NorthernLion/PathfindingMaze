@@ -3,18 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package north.pathfindingmazejava;
-
-import north.pathfindingmazejava.logic.Maze;
+package north.pathfindingmazejava.datastructures;
 
 /**
  *
  * @author northernpike
  */
-public class Main {
-        public static void main(String[] args) {
-            Maze maze = new Maze();
-            maze.start();
-        }
+public class HashSet<E>  {
     
 }

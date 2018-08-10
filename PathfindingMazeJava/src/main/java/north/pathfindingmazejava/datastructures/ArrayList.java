@@ -1,15 +1,59 @@
 package north.pathfindingmazejava.datastructures;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+public class ArrayList<E> {
+    private Object[] list;
+    private int size;
 
-/**
- *
- * @author northernpike
- */
-public class ArrayList {
+    public ArrayList() {
+        this.list = new Object[1];
+        size = 0;
+    }
     
+    public void add (Object o) {
+        try {
+            if(list.length - 1 == size) {
+                this.expand();
+            }
+            list[size] = o;
+            size++;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Adding to ArrayList failed " + e.getMessage());
+        }
+    }
+    
+    private void expand() {
+        Object[] newList = new Object[size + size / 2 + 2];
+        for (int i = 0; i < list.length; i++) {
+            newList[i] = list[i];
+        }
+        this.list = newList;
+    }
+    
+    public Object get(int i) {
+        try {
+            return list[i];
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Getting from ArrayList failed " + e.getMessage());
+        }
+        return null; //No return my ass fix.
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getSize() {
+        return size;
+    }
+    
+    public void reverse(){
+        Object[] relist = new Object[list.length];        
+        int j = size-1;
+        
+        for(int i = 0; i < size; i++){
+            relist[i] = list[j];
+            j--;
+        }
+        this.list = relist;
+    }
 }

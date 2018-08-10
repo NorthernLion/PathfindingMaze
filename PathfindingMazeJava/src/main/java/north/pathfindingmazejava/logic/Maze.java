@@ -27,7 +27,8 @@ public class Maze {
     public void start() {
         if (gInterface != null) {
             gInterface.close();
-        }        
+        }
+        grid.gridInitializeTiles();
         this.gInterface = new UserInterface(this);
         SwingUtilities.invokeLater(gInterface);
     }
@@ -35,6 +36,7 @@ public class Maze {
     public Grid getGrid() {
         return grid;
     }
+    
     
     
     

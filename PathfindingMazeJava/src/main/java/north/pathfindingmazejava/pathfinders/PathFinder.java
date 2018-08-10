@@ -5,10 +5,14 @@
  */
 package north.pathfindingmazejava.pathfinders;
 
+import north.pathfindingmazejava.logic.Tile;
+
 /**
  *
  * @author northernpike
  */
 public interface PathFinder {
+    
+    public int find(Tile start, Tile end);
     
 }
