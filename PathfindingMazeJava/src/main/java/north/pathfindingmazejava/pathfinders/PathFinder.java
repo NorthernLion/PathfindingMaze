@@ -13,6 +13,7 @@ import north.pathfindingmazejava.logic.Tile;
  */
 public interface PathFinder {
     
-    public int find(Tile start, Tile end);
+    public int find();
+    public void initialize();
     
 }

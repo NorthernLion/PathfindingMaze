@@ -1,6 +1,7 @@
 package north.pathfindingmazejava.pathfinders;
 
 
+import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.logic.Tile;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,12 +18,23 @@ public class AStarTest {
 
     @Before
     public void setUp() {
-        readyMade = new AStar();
+        Grid grid = new Grid();
+        grid.gridInitializeTiles();
+        grid.getGrid()[0][0].setStart(true);
+        grid.getGrid()[5][7].setEnd(true);
+        
+        readyMade = new AStar(grid);
         added = new Tile (5, 10);
         added2 = new Tile(0, 10);
         added3 = new Tile(10, 20);
         added4 = new Tile(2, 4);
     }
+    
+    @Test
+    public void testFindNoBlocks() {
+        int answer = readyMade.find();
+        assertEquals(7, answer);        // 1,1 2,2 3,3 4,4 5,5 5,6 5,7 = 7 ?
+    }    
     
     @Test
     public void testManhattan() {

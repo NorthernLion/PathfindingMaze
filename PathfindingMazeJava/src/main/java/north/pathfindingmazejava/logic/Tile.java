@@ -1,6 +1,6 @@
 package north.pathfindingmazejava.logic;
 
-public class Tile {
+public class Tile implements Comparable<Tile>{
 
     private int value; // Might be used for algorithms
     private int x;
@@ -18,8 +18,10 @@ public class Tile {
         this.end = false;
         this.blocked = false;
         this.checked = false;
-        this.value = 0; // Might be used for algorithms
+        this.value = 1; // Might be used for algorithms
     }
+    
+    
 
     public int getX() {
         return x;
@@ -67,7 +69,23 @@ public class Tile {
 
     public boolean isStart() {
         return start;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }    
+    
+    @Override
+    public int compareTo(Tile other) {
+        if (other.value < this.value) {
+            return 1;
+        }
+        return -1;
+    } 
 
     @Override
     public String toString() {
