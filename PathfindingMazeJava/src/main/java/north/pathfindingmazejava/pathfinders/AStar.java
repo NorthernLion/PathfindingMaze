@@ -24,7 +24,7 @@ public class AStar implements PathFinder{
     @Override
     public int find(Tile start, Tile end) {
         HashSet<Tile> closed = new HashSet<>();
-        HashSet<Tile> open = new HashSet<>();
+        HashSet<Tile> open = new PriorityQueue<>();
         HashMap<Tile, Tile> cameFrom = new HashMap<>();
         HashMap<Tile, Integer> gScore = new HashMap<>();
         HashMap<Tile, Integer> fScore = new HashMap<>();
@@ -34,6 +34,15 @@ public class AStar implements PathFinder{
 
         }
         return 0;
+    }
+    
+    //Hah these heuristic were easy, maybe make heuristic into interface!?!?! lets see
+    public int manhattanDistance(Tile a, Tile b) {
+        return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()));
+    }
+    
+    public int euclideanDistance(Tile a, Tile b) {
+        return (int) (Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2)));
     }
     
 }
