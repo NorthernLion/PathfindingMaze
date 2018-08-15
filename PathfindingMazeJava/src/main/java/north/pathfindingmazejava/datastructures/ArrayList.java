@@ -27,15 +27,10 @@ public class ArrayList<E> {
             newList[i] = list[i];
         }
         this.list = newList;
-    }
+    }    
     
     public Object get(int i) {
-        try {
-            return list[i];
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Getting from ArrayList failed " + e.getMessage());
-        }
-        return null; //No return my ass fix.
+        return list[i];
     }
 
     public void setSize(int size) {

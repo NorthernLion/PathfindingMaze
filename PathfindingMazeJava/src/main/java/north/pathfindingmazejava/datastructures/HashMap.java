@@ -16,7 +16,7 @@ public class HashMap<K, V>  {
     private ArrayList<K> set;
 
     public HashMap() {
-        this.size = 20;
+        this.size = 16; //Should be pow of 2s
         this.table = new Entry[this.size];        
         this.set = new ArrayList<>();
     }    
