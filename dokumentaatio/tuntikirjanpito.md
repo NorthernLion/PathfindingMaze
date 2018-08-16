@@ -6,3 +6,4 @@ Päivä | Aloitus | Lopetus | Tunnit | Kuvaus
 02.08.2018 | 9:00 | 12:00 | 03:00 | Tira ihmettely, kansio rakenteen suunnittelu, luokka jako, interfacen miettiminen
 03.08.2018 | 20:00 | 23:00 | 03:00 | Graaffisen esityksen tekeminen
 10.08.2018 | 10:00 | 19:00 | 9:00 | Datastructuret ja muut
+15.08.2018 | 09:00 | 15:00 | 6:00 | A*
