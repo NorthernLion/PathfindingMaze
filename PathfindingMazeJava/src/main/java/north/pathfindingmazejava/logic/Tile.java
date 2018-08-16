@@ -21,6 +21,16 @@ public class Tile implements Comparable<Tile>{
         this.value = 1; // Might be used for algorithms
     }
     
+   public Tile(int x, int y, int value) {
+        this.x = x;
+        this.y = y;
+        this.value = value;
+        this.start = false;
+        this.end = false;
+        this.blocked = false;
+        this.checked = false;  
+   }
+    
     
 
     public int getX() {
