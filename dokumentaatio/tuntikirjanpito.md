@@ -7,3 +7,4 @@ Päivä | Aloitus | Lopetus | Tunnit | Kuvaus
 03.08.2018 | 20:00 | 23:00 | 03:00 | Graaffisen esityksen tekeminen
 10.08.2018 | 10:00 | 19:00 | 9:00 | Datastructuret ja muut
 15.08.2018 | 09:00 | 15:00 | 6:00 | A*
+16.08.2018 | 08:00 | 14:00 | 6:00 | Testaus, Priority queue, siivous
