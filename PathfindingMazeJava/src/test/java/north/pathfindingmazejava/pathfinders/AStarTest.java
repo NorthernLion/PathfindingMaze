@@ -1,6 +1,7 @@
 package north.pathfindingmazejava.pathfinders;
 
 
+import north.pathfindingmazejava.datastructures.ArrayList;
 import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.logic.Tile;
 import org.junit.Before;
@@ -33,8 +34,23 @@ public class AStarTest {
     @Test
     public void testFindNoBlocks() {
         int answer = readyMade.find();
-        assertEquals(7, answer);        // 1,1 2,2 3,3 4,4 5,5 5,6 5,7 = 7 ?
+        assertEquals(7, answer);
     }    
+    
+    @Test
+    public void constructPathCorrectly() {
+        readyMade.find();
+        ArrayList<Tile> thepath = readyMade.constructPath();
+        
+        assertEquals("(0,0)", thepath.get(0).toString());
+        assertEquals("(0,1)", thepath.get(1).toString());
+        assertEquals("(0,2)", thepath.get(2).toString());
+        assertEquals("(1,3)", thepath.get(3).toString());
+        assertEquals("(2,4)", thepath.get(4).toString());
+        assertEquals("(3,5)", thepath.get(5).toString());
+        assertEquals("(4,6)", thepath.get(6).toString());
+        assertEquals("(5,7)", thepath.get(7).toString());
+    }
     
     @Test
     public void testManhattan() {

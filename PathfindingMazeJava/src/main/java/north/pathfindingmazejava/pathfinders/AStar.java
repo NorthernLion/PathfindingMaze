@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package north.pathfindingmazejava.pathfinders;
 
 import java.util.HashSet;
-import java.util.PriorityQueue;
+import north.pathfindingmazejava.datastructures.PriorityQueue;
 import north.pathfindingmazejava.datastructures.ArrayList;
-import north.pathfindingmazejava.datastructures.HashMap;
 import north.pathfindingmazejava.logic.Tile;
 import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.datastructures.HashMap;
@@ -17,7 +11,7 @@ import north.pathfindingmazejava.datastructures.HashMap;
  *
  * @author northernpike
  */
-public class AStar implements PathFinder{
+public class AStar implements PathFinder {
     
     private Grid grid;
     private HashSet<Tile> closed; //The Tiles visited will be placed here
@@ -29,7 +23,7 @@ public class AStar implements PathFinder{
     private Tile end; //What could go wrong if saved here....
     private Tile start;
     
-    
+    // There are some issue with setting value for tiles in priority queue, need  to save reconstruct somewhere
     public AStar(Grid grid) {
         closed = new HashSet<>();
         open = new PriorityQueue<>();
@@ -83,7 +77,7 @@ public class AStar implements PathFinder{
     public ArrayList constructPath() {
         ArrayList<Tile> path = new ArrayList<>();
         Tile current = end;
-        while (! current.isStart()) {
+        while (!current.isStart()) {
             path.add(current);
             current = cameFrom.get(current);
         }
@@ -94,8 +88,8 @@ public class AStar implements PathFinder{
     
     @Override
     public void initialize() {        
-        for (int i = 0; i <= this.grid.getSize()-1; i++) {
-            for (int j = 0; j <= this.grid.getSize()-1; j++) {
+        for (int i = 0; i <= this.grid.getSize() - 1; i++) {
+            for (int j = 0; j <= this.grid.getSize() - 1; j++) {
                 Tile current = this.grid.getGrid()[j][i];
                 if (current.isEnd()) {
                     this.end = current;

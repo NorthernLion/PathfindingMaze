@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package north.pathfindingmazejava.datastructures;
 
 import north.pathfindingmazejava.logic.Tile;
@@ -21,33 +16,31 @@ public class PriorityQueue<E> {
     }
     
     public void add(Tile given) {
-        int index = current -1;
-        
-        if(list.length == index) {
+        if (this.list.length == current) {
             this.expand();
         }
         
         if (this.isEmpty()) {
-            list[current] = given;
-        } else {
-            if (given.getValue() >= list[index].getValue()) {
-                list[current] = given;
+            this.list[current] = given;
+        } else {            
+            int index = current - 1;
+            if (given.getValue() >= this.list[index].getValue()) {
+                this.list[current] = given;
             } else {
-                while(index > 0) {
-                    if(given.getValue() < list[index].getValue()) {
+                while (index > 0) {
+                    if (given.getValue() > this.list[index].getValue()) {
                         break;
                     }
                     index--;
                 }
-                
-                Tile old = list[index];
+                Tile old = this.list[index];
                 Tile next = null;
-                list[index] = given;
+                this.list[index] = given;
                 index++;
                 
-                while(index <= current) {
-                    next = list[index];
-                    list[index] = old;
+                while (index <= current) {
+                    next = this.list[index];
+                    this.list[index] = old;
                     index++;
                     old = next;
                 }
@@ -58,15 +51,15 @@ public class PriorityQueue<E> {
     
     private void expand() {
         Tile[] newlist = new Tile[(current * 2)];
-        for (int i = 0; i < current -1; i++) {
+        for (int i = 0; i < list.length; i++) {
             newlist[i] = this.list[i];
         }
-        this.list = newlist;        
+        this.list = newlist;
     }
     
     public boolean isEmpty() {
         for (int i = 0; i < current; i++) {
-            if (list[i] != null) {
+            if (this.list[i] != null) {
                 return false;
             }
         }
@@ -74,19 +67,19 @@ public class PriorityQueue<E> {
     }
     
     public Tile poll() {
-        Tile highest = list[0];
-        for (int i = 0; i < list.length; i++) {
-            list[i] = list[i+1];
+        Tile highest = this.list[0];
+        for (int i = 0; i < this.list.length - 1; i++) {
+            list[i] = this.list[i + 1];
         }
-        if(current > 0) {
-            current --;
+        if (current > 0) {
+            current--;
         }
         return highest;
     }
     
     public boolean contains(Tile given) {
         for (int i = 0; i < current; i++) {
-            if(given.equals(list[i])) {
+            if (given.equals(this.list[i])) {
                 return true;
             }
         }
@@ -94,8 +87,10 @@ public class PriorityQueue<E> {
     }
     
     public int size() {
-        return this.list.length;
+        return current;
     }
+    
+    
     
     
     

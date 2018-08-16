@@ -9,20 +9,16 @@ public class ArrayList<E> {
         size = 0;
     }
     
-    public void add (Object o) {
-        try {
-            if(list.length - 1 == size) {
-                this.expand();
-            }
-            list[size] = o;
-            size++;
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Adding to ArrayList failed " + e.getMessage());
+    public void add(Object o) {
+        if (list.length - 1 == size) {
+            this.expand();
         }
+        list[size] = o;
+        size++;
     }
     
     private void expand() {
-        Object[] newList = new Object[size + size / 2 + 2];
+        Object[] newList = new Object[(size + size / 2 + 2)];
         for (int i = 0; i < list.length; i++) {
             newList[i] = list[i];
         }
@@ -32,20 +28,16 @@ public class ArrayList<E> {
     public Object get(int i) {
         return list[i];
     }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
+    
     public int getSize() {
         return size;
     }
     
-    public void reverse(){
+    public void reverse() {
         Object[] relist = new Object[list.length];        
-        int j = size-1;
+        int j = size - 1;
         
-        for(int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             relist[i] = list[j];
             j--;
         }
