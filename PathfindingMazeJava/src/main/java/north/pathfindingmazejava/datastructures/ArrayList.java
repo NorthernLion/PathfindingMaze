@@ -23,7 +23,16 @@ public class ArrayList<E> {
             newList[i] = list[i];
         }
         this.list = newList;
-    }    
+    }
+    
+    public boolean contains(Object o) {
+        for (int i = 0; i < size; i++) {
+            if (list[i] == o) {
+                return true;
+            }
+        }
+        return false;
+    }
     
     public Object get(int i) {
         return list[i];

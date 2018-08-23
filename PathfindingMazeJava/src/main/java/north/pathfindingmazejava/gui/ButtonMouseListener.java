@@ -1,13 +1,10 @@
 package north.pathfindingmazejava.gui;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.List;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import north.pathfindingmazejava.datastructures.ArrayList;
 import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.logic.Tile;
 
@@ -29,7 +26,11 @@ public class ButtonMouseListener implements MouseListener {
         this.button = squares[y][x];
     }
 
-    public void handleButton(int y, int x) {
+    public void clearButton(Tile current) {
+        JButton button = squares[current.getX()][current.getY()];
+        if (!current.isBlocked() && !current.isStart() && !current.isEnd()) {
+            button.setText("");
+        }
     }
 
     @Override
@@ -41,9 +42,11 @@ public class ButtonMouseListener implements MouseListener {
     public void mousePressed(MouseEvent me
     ) {
         Tile current = maze[y][x];
+        ArrayList<Tile> clearable = new ArrayList<>();
         if (SwingUtilities.isLeftMouseButton(me)) {
             current.setBlocked(false);
             if (current.isStart()) {
+                clearable = grid.setOneEnd(current);
                 current.setEnd(true);
                 current.setStart(false);
                 button.setText("F");
@@ -52,7 +55,7 @@ public class ButtonMouseListener implements MouseListener {
                 current.setStart(false);
                 button.setText("");                
             } else {
-                current.setStart(true);
+                clearable = grid.setOneStart(current);
                 button.setText("S");
             }
         } else if (SwingUtilities.isRightMouseButton(me)) {
@@ -65,6 +68,10 @@ public class ButtonMouseListener implements MouseListener {
                 current.setBlocked(true);
                 button.setText("B");                
             }
+        }
+        for (int i = 0; i < clearable.getSize(); i++) {
+            Tile clearableTile = (Tile) clearable.get(i);
+            clearButton(clearableTile);            
         }
     }
 

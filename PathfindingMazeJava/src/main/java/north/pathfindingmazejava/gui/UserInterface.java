@@ -1,5 +1,6 @@
 package north.pathfindingmazejava.gui;
 
+import java.awt.Color;
 import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.logic.Maze;
 import java.awt.Container;
@@ -8,9 +9,9 @@ import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.WindowConstants;
+import north.pathfindingmazejava.datastructures.ArrayList;
+import north.pathfindingmazejava.logic.Tile;
 
 public class UserInterface implements Runnable {
 
@@ -45,6 +46,30 @@ public class UserInterface implements Runnable {
                 container.add(button);
             }
         }
+    }
+    //Thread.sleep(100)
+    public void showVisited(ArrayList visited) {
+        for (int i = 0; i < visited.getSize(); i++) {
+            Tile current = (Tile) visited.get(i);
+            squares[current.getX()][current.getY()].setBackground(Color.yellow);
+            squares[current.getX()][current.getY()].setText("" + current.getValue());
+            try {
+                Thread.sleep(10);
+            } catch (Exception e) {
+            }            
+        }        
+    }
+    
+    public void showPath(ArrayList path) {
+        for (int i = 0; i < path.getSize(); i++) {
+            Tile current = (Tile) path.get(i);
+            squares[current.getX()][current.getY()].setBackground(Color.red);
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) {
+            }            
+        }        
+        
     }
     
     public void close() {

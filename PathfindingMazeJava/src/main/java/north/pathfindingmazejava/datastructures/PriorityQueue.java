@@ -17,10 +17,10 @@ public class PriorityQueue<E> {
     
     public void add(Tile given) {
         if (this.list.length == current) {
-            this.expand();
+            expand();
         }
         
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             this.list[current] = given;
         } else {            
             int index = current - 1;
@@ -28,10 +28,10 @@ public class PriorityQueue<E> {
                 this.list[current] = given;
             } else {
                 while (index > 0) {
+                    index--;
                     if (given.getValue() > this.list[index].getValue()) {
                         break;
                     }
-                    index--;
                 }
                 Tile old = this.list[index];
                 Tile next = null;
@@ -89,6 +89,17 @@ public class PriorityQueue<E> {
     public int size() {
         return current;
     }
+
+    @Override
+    public String toString() {
+        String to = "[";
+        for (int i = 0; i < list.length; i++) {
+            to += list[i];
+        }
+        to += "]";
+        return to;    
+    }
+    
     
     
     

@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author northernpike
  */
 public class PriorityQueueTest {
-    PriorityQueue queue;
+    PriorityQueue<Tile> queue;
     Tile first;
     Tile second;
     Tile third;
@@ -53,9 +53,14 @@ public class PriorityQueueTest {
         queue.add(second);  
         queue.add(first);
         assertEquals(first, queue.poll());
+        System.out.println(queue);
         queue.add(third);
+        System.out.println(queue);
         queue.add(second);
+        System.out.println(queue);
         queue.add(first);
+        System.out.println("trorlo");
+        System.out.println(queue);
         assertEquals(first, queue.poll());
         queue.add(third);
         queue.add(second);

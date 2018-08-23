@@ -16,12 +16,15 @@ import org.junit.Test;
 public class GridTest {
     
     Grid readyMade;
+    Grid empty;
     Tile tile;
     Tile tile2;
     Tile tile3;
     
     @Before
     public void setUp() {
+        empty = new Grid();
+        empty.gridInitializeTiles();
         readyMade = new Grid();
         readyMade.gridInitializeTiles();
         tile = readyMade.getGrid()[0][0];        
@@ -53,6 +56,30 @@ public class GridTest {
     @Test
     public void testGettingNeighborsWhenNextToBlcoked() {        
         assertEquals(readyMade.getNeigboringTiles(tile), null);
+    }
+    
+    @Test
+    public void testWithEmptyGridsetOneEndReturnsEmptyArrayList() {
+        assertEquals(empty.setOneEnd(tile).getSize(), 0);
+    }
+    
+    @Test
+    public void testWithEmptyGridsetOneStartReturnsEmptyArrayList() {
+        assertEquals(empty.setOneEnd(tile).getSize(), 0);
+    }
+    
+        @Test
+    public void testWithAlredySetStartGridsetOneStartReturnsArrayListWithSetStart() {
+        empty.getGrid()[0][0].setStart(true);
+        Tile settedstart = empty.getGrid()[0][0];
+        assertEquals(empty.setOneStart(tile).get(0), settedstart);
+    }
+    
+    @Test
+    public void testWithAlredySetEndGridsetOneEndReturnsArrayListWithSetEnd() {
+        empty.getGrid()[0][0].setEnd(true);
+        Tile settedend = empty.getGrid()[0][0];
+        assertEquals(empty.setOneEnd(tile).get(0), settedend);
     }
     
 

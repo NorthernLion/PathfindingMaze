@@ -5,18 +5,18 @@
  */
 package north.pathfindingmazejava.pathfinders;
 
-import north.pathfindingmazejava.datastructures.ArrayList;
+import north.pathfindingmazejava.datastructures.PriorityQueue;
 import north.pathfindingmazejava.logic.Tile;
 
 /**
  *
  * @author northernpike
  */
-public interface PathFinder {
+public class Dijkstra {
     
-    public int find();
-    public void initialize();
-    public ArrayList constructPath();
-    public ArrayList getVisited();
+    private PriorityQueue<Tile> q;
+    private Tile end; 
+    private Tile start;
+    
     
 }

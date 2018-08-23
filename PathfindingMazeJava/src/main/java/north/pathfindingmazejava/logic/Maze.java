@@ -6,7 +6,10 @@
 package north.pathfindingmazejava.logic;
 
 import javax.swing.SwingUtilities;
+import north.pathfindingmazejava.gui.TextUi;
 import north.pathfindingmazejava.gui.UserInterface;
+import north.pathfindingmazejava.pathfinders.AStar;
+import north.pathfindingmazejava.pathfinders.PathFinder;
 
 /**
  *
@@ -30,7 +33,21 @@ public class Maze {
         }
         grid.gridInitializeTiles();
         this.gInterface = new UserInterface(this);
-        SwingUtilities.invokeLater(gInterface);
+        SwingUtilities.invokeLater(gInterface);        
+        TextUi textualui = new TextUi();
+        String algorithm = textualui.run();
+        
+        PathFinder pather = null;
+        
+        if (algorithm.equals("A*")) {
+            pather = new AStar(grid);
+        }
+        
+        pather.initialize();
+        pather.find();
+        gInterface.showVisited(pather.getVisited());
+        gInterface.showPath(pather.constructPath());        
+        
     }
 
     public Grid getGrid() {

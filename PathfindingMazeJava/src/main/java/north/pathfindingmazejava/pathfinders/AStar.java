@@ -1,7 +1,6 @@
 package north.pathfindingmazejava.pathfinders;
 
-import java.util.HashSet;
-import north.pathfindingmazejava.datastructures.PriorityQueue;
+//import north.pathfindingmazejava.datastructures.PriorityQueue;
 import north.pathfindingmazejava.datastructures.ArrayList;
 import north.pathfindingmazejava.logic.Tile;
 import north.pathfindingmazejava.logic.Grid;
@@ -11,69 +10,66 @@ import north.pathfindingmazejava.datastructures.HashMap;
  *
  * @author northernpike
  */
-public class AStar implements PathFinder {
+import java.util.PriorityQueue;
+public class AStar extends AbstractPathfinder {
     
     private Grid grid;
-    private HashSet<Tile> closed; //The Tiles visited will be placed here
+    //The Tiles visited will be placed here
     private PriorityQueue<Tile> open; //The Tiles not yet visited will be in a priority queue acording to the value heuristics has given them
-    //rest a bit unclear
     private HashMap<Tile, Tile> cameFrom;
     private HashMap<Tile, Integer> gScore;
-    private HashMap<Tile, Integer> fScore;
-    private Tile end; //What could go wrong if saved here....
-    private Tile start;
+
     
     // There are some issue with setting value for tiles in priority queue, need  to save reconstruct somewhere
     public AStar(Grid grid) {
-        closed = new HashSet<>();
+        super();
         open = new PriorityQueue<>();
         this.grid = grid;
         this.cameFrom = new HashMap<>();
         this.gScore = new HashMap<>();
-        this.fScore = new HashMap<>();
     }
     
     
 
     @Override
-    public int find() { //Definetly still needs cleaning... This is a stackoverflow, wikipedia, google combination monster!
-        this.initialize();
-        
+    public int find() {
         while (!open.isEmpty()) {
             Tile current = open.poll();
+            
             if (current.isEnd()) {
+                while (!open.isEmpty()) { //this is simply for the sake of showing visited tiles
+                    visited.add(open.poll());
+                }
                 return gScore.get(current);
             }
-            
-            closed.add(current);
+
+            visited.add(current);
             
             ArrayList<Tile> neighbors = grid.getNeigboringTiles(current);
             
             for (int i = 0; i < neighbors.getSize(); i++) {
                 Tile neighbor = (Tile) neighbors.get(i);
-                if (closed.contains(neighbor)) { //The Tile has alredy been visited
+                if (visited.contains(neighbor)) { //The Tile has alredy been visited
                     continue;
-                }
-                
-                if (!open.contains(neighbor)) {
-                    open.add(neighbor);
-                }
+                }   
                 
                 int cost = gScore.get(current) + 1; // 1 is the distance between every tile.
+                int estimation = cost + this.manhattanDistance(neighbor, end);
                 
-                if (cost >= gScore.get(neighbor)) { //Not a better path comparison
+                if (estimation > gScore.get(neighbor)) { //Not a better path comparison
                     continue;
-                }
-                
+                }                
+                neighbor.setValue(estimation);
+                open.add(neighbor);      
                 cameFrom.put(neighbor, current);
                 gScore.put(neighbor, cost);
-                fScore.put(neighbor, gScore.get(neighbor) + this.manhattanDistance(neighbor, this.end));
+                
             }
         }
-        
         return -1;
     }
     
+    @Override
     public ArrayList constructPath() {
         ArrayList<Tile> path = new ArrayList<>();
         Tile current = end;
@@ -85,7 +81,7 @@ public class AStar implements PathFinder {
         path.reverse();
         return path;
     }
-    
+        
     @Override
     public void initialize() {        
         for (int i = 0; i <= this.grid.getSize() - 1; i++) {
@@ -95,16 +91,15 @@ public class AStar implements PathFinder {
                     this.end = current;
                 }
                 if (current.isStart()) {
-                    gScore.put(current, 0);
-                    open.add(current);
                     this.start = current;
                 } else {
                     gScore.put(current, Integer.MAX_VALUE);
-                    fScore.put(current, Integer.MAX_VALUE);
                 }
             }
         }
-        fScore.put(start, this.manhattanDistance(start, end));
+        start.setValue(0);
+        gScore.put(start, 0);
+        open.add(start);
     }
     
     //maybe make heuristic into interface!?!?! lets see

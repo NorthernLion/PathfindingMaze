@@ -55,6 +55,39 @@ public class Grid {
         }
         return neighbors;
     }
+    
+    public ArrayList<Tile> setOneEnd(Tile tile) {
+        ArrayList<Tile> oldEnds = new ArrayList<>();
+        int x = tile.getX();
+        int y = tile.getY();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (grid[j][i].isEnd()) {
+                    grid[j][i].setEnd(false);
+                    oldEnds.add(grid[j][i]);
+                }                
+            }
+        }
+        tile.setEnd(true);
+        return oldEnds;        
+    }
+    
+    public ArrayList<Tile> setOneStart(Tile tile) {
+        ArrayList<Tile> oldstarts = new ArrayList<>();
+        int x = tile.getX();
+        int y = tile.getY();
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if (grid[j][i].isStart()) {
+                    grid[j][i].setStart(false);
+                    oldstarts.add(grid[j][i]);                    
+                }       
+            }
+        }
+        tile.setStart(true);
+        return oldstarts;
+        
+    }
 
     public Tile[][] getGrid() {
         return grid;

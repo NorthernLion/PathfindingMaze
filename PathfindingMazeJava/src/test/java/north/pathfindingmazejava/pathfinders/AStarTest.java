@@ -25,6 +25,7 @@ public class AStarTest {
         grid.getGrid()[5][7].setEnd(true);
         
         readyMade = new AStar(grid);
+        readyMade.initialize();
         added = new Tile (5, 10);
         added2 = new Tile(0, 10);
         added3 = new Tile(10, 20);
@@ -43,12 +44,12 @@ public class AStarTest {
         ArrayList<Tile> thepath = readyMade.constructPath();
         
         assertEquals("(0,0)", thepath.get(0).toString());
-        assertEquals("(0,1)", thepath.get(1).toString());
-        assertEquals("(0,2)", thepath.get(2).toString());
-        assertEquals("(1,3)", thepath.get(3).toString());
-        assertEquals("(2,4)", thepath.get(4).toString());
-        assertEquals("(3,5)", thepath.get(5).toString());
-        assertEquals("(4,6)", thepath.get(6).toString());
+        assertEquals("(1,1)", thepath.get(1).toString());
+        assertEquals("(2,2)", thepath.get(2).toString());
+        assertEquals("(3,3)", thepath.get(3).toString());
+        assertEquals("(4,4)", thepath.get(4).toString());
+        assertEquals("(5,5)", thepath.get(5).toString());
+        assertEquals("(5,6)", thepath.get(6).toString());
         assertEquals("(5,7)", thepath.get(7).toString());
     }
     

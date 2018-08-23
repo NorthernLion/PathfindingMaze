@@ -2,7 +2,7 @@ package north.pathfindingmazejava.logic;
 
 public class Tile implements Comparable<Tile> {
 
-    private int value; // Might be used for algorithms
+    private int value; 
     private int x;
     private int y;
     private boolean start;
@@ -89,23 +89,19 @@ public class Tile implements Comparable<Tile> {
         this.value = value;
     }    
     
+    public boolean equal(Tile other) {
+        if (getX() == other.getX() && getY() == other.getY() && getValue() == other.getValue()) {
+            return true;
+        } 
+        return false;
+    }
+    
     @Override
     public int compareTo(Tile other) {
-        if (other.getValue() > this.getValue()) {
-            return 1;
-        }
-        return -1;
+        return (int) (getValue() - other.getValue());
     } 
     
     
-    public boolean equal(Tile other) {
-        if (this.x == other.getX() && this.y == other.getY()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     @Override
     public String toString() {
         return "(" + this.x + "," + this.y + ")";

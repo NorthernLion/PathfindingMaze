@@ -26,10 +26,10 @@ public class TileTest {
     
     @Test
     public void compareTest() {
-        assertEquals(1, tile1.compareTo(tile2));
-        assertEquals(-1, tile2.compareTo(tile1));
+        assertEquals(-15, tile1.compareTo(tile2));
+        assertEquals(15, tile2.compareTo(tile1));
         tile1.setValue(20);
-        assertEquals(-1, tile1.compareTo(tile2));
+        assertEquals(0, tile1.compareTo(tile2));
         
     }
     
