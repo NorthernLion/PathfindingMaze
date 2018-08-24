@@ -1,4 +1,4 @@
-¤¤ Testausdokumentti
+## Testausdokumentti
 Ohjelmisto on testattu Junit yksikkötesteillä, jotka testaavat kattavasti ohjelmiston eri osia. 
 Kattavuuden määrittämiseksi on käytetty apuna pit-raportteja, joiden mukaan koodin rivikattavuus on xx ja muaatiokattavuus on xx. 
 Testauksen ulkopuolelle on jätetty kaikki UI liittyvät luokat (tekstuaalinen, graaffinen ja mouselistener).
