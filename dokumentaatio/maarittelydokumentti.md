@@ -1,3 +1,5 @@
+## Maarittelydokumentti
+
 Ohjelma kirjoitetaan Javalla Maven projketina.
 
 Ohjelma vertaa erilaisten algoritmien tehoa lyhimmän reitin löytämisesssä kahden pisteen välillä 2d ruudukossa, jossa kaikkien pisteiden välisten kaarien arvo on sama (1). 2D ruudukossa pisteen voi kuitenkin merkata estetyksi, jolloin algoritmi ei pysty kulkemaan sen läpi reittiä etsissäessä. Reitin löytymisen jälkeen ohjelma mallintaa algoritmien toimintaa graaffisesti käyttäen Java Swingiä. Käyttäjä pystyy luomaan kartan ohjelmiston kautta hiiren avulla. Hiiren oikealla näppäimellä voidaan poistaa ja lisätä esteitä ja vasemmalla painikkeella (yhdesti) asettaa aloituspisteen ja (kahdesti) asettaa lopetuspisteen. 
