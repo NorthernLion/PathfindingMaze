@@ -11,4 +11,4 @@ Päivä | Aloitus | Lopetus | Tunnit | Kuvaus
 21.08.2018 |-- | -- | 2:00 | Dijkstran ihmettely
 22.08.2018 | -- | -- | 6:00 | A* toimii vihdoinkin halutusti ja priority queue korjattu myös
 23.08.2018 | -- | -- | 4:00 | Tekstuaalinen UI ohjelma käyttämiseksi, testien korjaus ja lisäys ja cleancode
-24.08.2018 | -- | -- |== | Ubunttu korjaus....
+24.08.2018 | -- | -- | 4:00|  Siivous, Java Doc, Dokumentaatio
