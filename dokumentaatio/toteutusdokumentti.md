@@ -22,4 +22,4 @@ Dijkstra | O((n + m) log n) | O(n)
 A* | O((n + m) log n) | O(n)
 
 ## Puutteet
-Työn jatkokehittäminen lisäämällä lisää algoritmeja on helposti mahdollista rakenteen avulla.
+Työn jatkokehittäminen on helppoa ohjelmiston rakenteen takia. Uusien algoritmien lisäämisessä on vaikea mennä väärään, kunhan ne toteuttavat pathfinder rajapinnan.
