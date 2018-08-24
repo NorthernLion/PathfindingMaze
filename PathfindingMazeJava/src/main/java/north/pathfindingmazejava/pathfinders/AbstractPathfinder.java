@@ -10,11 +10,16 @@ import north.pathfindingmazejava.logic.Tile;
  */
 
 /**
- *
+ *  This is the abstract class for path finders. All similar code between path finders is implemented here to reduce copy paste.
  * @author northernpike
  */
 public abstract class AbstractPathfinder implements PathFinder {
+
+    /**
+     * ArrayList that has all the visited aka evaluated Tiles.
+     */
     public ArrayList<Tile> visited;
+
     public Tile end;
     public Tile start;
 

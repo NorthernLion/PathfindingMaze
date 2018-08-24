@@ -14,12 +14,12 @@ public class AStarTest {
     Tile added2;
     Tile added3;
     Tile added4;
-    
+    Grid grid;
     
 
     @Before
     public void setUp() {
-        Grid grid = new Grid();
+        grid = new Grid();
         grid.gridInitializeTiles();
         grid.getGrid()[0][0].setStart(true);
         grid.getGrid()[5][7].setEnd(true);
@@ -37,6 +37,18 @@ public class AStarTest {
         int answer = readyMade.find();
         assertEquals(7, answer);
     }    
+    
+    @Test
+    public void testWithBlocks() {
+        grid.getGrid()[1][1].setBlocked(true);
+        grid.getGrid()[1][2].setBlocked(true);
+        grid.getGrid()[2][1].setBlocked(true);
+        grid.getGrid()[2][2].setBlocked(true);
+        AStar newMade = new AStar(grid);
+        newMade.initialize();
+        int answer = newMade.find();
+        assertEquals(9, answer);
+    }
     
     @Test
     public void constructPathCorrectly() {

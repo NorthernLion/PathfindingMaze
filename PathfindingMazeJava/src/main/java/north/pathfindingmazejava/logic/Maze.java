@@ -12,7 +12,7 @@ import north.pathfindingmazejava.pathfinders.AStar;
 import north.pathfindingmazejava.pathfinders.PathFinder;
 
 /**
- *
+ *  This is the main class of the project.
  * @author northernpike
  */
 public class Maze {
@@ -21,12 +21,16 @@ public class Maze {
     private Grid grid;
     private UserInterface gInterface;
 
+    /**
+     *
+     */
     public Maze() {
         this.grid = new Grid();
     }
     
-    
-    
+    /**
+     * The main method of the program. Starts the GUI, Text UI, Maze and algorithms.
+     */
     public void start() {
         if (gInterface != null) {
             gInterface.close();
@@ -36,6 +40,26 @@ public class Maze {
         SwingUtilities.invokeLater(gInterface);        
         TextUi textualui = new TextUi();
         String algorithm = textualui.run();
+        
+        while (true) {
+            if (!grid.hasStart()) {
+                System.out.println("You must select a start point before selecting start");
+            }
+            if (!grid.hasEnd()) {
+                System.out.println("You must select a end point before selecting start");            
+            }
+            if (!grid.hasEnd() || !grid.hasStart()) {
+                System.out.println("____________________");
+                try {
+                    Thread.sleep(2000);
+                } catch (Exception e) {
+                }    
+                algorithm = textualui.run();
+            } else {
+                break;
+            }            
+        }
+
         
         PathFinder pather = null;
         
@@ -50,6 +74,10 @@ public class Maze {
         
     }
 
+    /**
+     *
+     * @return the Grid of the maze.
+     */
     public Grid getGrid() {
         return grid;
     }

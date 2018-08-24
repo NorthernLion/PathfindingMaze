@@ -11,22 +11,28 @@ import north.pathfindingmazejava.datastructures.HashMap;
  * @author northernpike
  */
 import java.util.PriorityQueue;
+
+/**
+ *
+ * @author northernpike
+ */
 public class AStar extends AbstractPathfinder {
     
     private Grid grid;
-    //The Tiles visited will be placed here
-    private PriorityQueue<Tile> open; //The Tiles not yet visited will be in a priority queue acording to the value heuristics has given them
+    private PriorityQueue<Tile> open; 
     private HashMap<Tile, Tile> cameFrom;
     private HashMap<Tile, Integer> gScore;
 
-    
-    // There are some issue with setting value for tiles in priority queue, need  to save reconstruct somewhere
+    /**
+     *
+     * @param grid
+     */
     public AStar(Grid grid) {
         super();
         open = new PriorityQueue<>();
         this.grid = grid;
-        this.cameFrom = new HashMap<>();
-        this.gScore = new HashMap<>();
+        this.cameFrom = new HashMap<>();    // The Tile it is most efficient to arrive to said Tile is saved here.
+        this.gScore = new HashMap<>();      // The distance from starting tile is saved here.
     }
     
     
@@ -37,7 +43,7 @@ public class AStar extends AbstractPathfinder {
             Tile current = open.poll();
             
             if (current.isEnd()) {
-                while (!open.isEmpty()) { //this is simply for the sake of showing visited tiles
+                while (!open.isEmpty()) {                                       // All Tiles in the open have been evaluated. So they have been visited and need to be added in the visited list when the end has been found.
                     visited.add(open.poll());
                 }
                 return gScore.get(current);
@@ -49,14 +55,14 @@ public class AStar extends AbstractPathfinder {
             
             for (int i = 0; i < neighbors.getSize(); i++) {
                 Tile neighbor = (Tile) neighbors.get(i);
-                if (visited.contains(neighbor)) { //The Tile has alredy been visited
+                if (visited.contains(neighbor)) {                               //The Tile has alredy been visited
                     continue;
                 }   
                 
-                int cost = gScore.get(current) + 1; // 1 is the distance between every tile.
-                int estimation = cost + this.manhattanDistance(neighbor, end);
+                int cost = gScore.get(current) + 1;                             // 1 is the distance between every tile and gScore.get(current) is the distance of previous tile from start
+                int estimation = cost + this.manhattanDistance(neighbor, end);  // Heuristic is added to this value to estimate the "goodness" of the tile
                 
-                if (estimation > gScore.get(neighbor)) { //Not a better path comparison
+                if (estimation > gScore.get(neighbor)) {                        // If lower estimation has been set at gscore before the path we are currently looking at is not better and we can continue
                     continue;
                 }                
                 neighbor.setValue(estimation);
@@ -68,6 +74,11 @@ public class AStar extends AbstractPathfinder {
         }
         return -1;
     }
+    
+    /**
+     * The most efficient path to current tile is saved in the cameFrom. That is why going trough the cameFrom from end to start creates the optimal path.
+     */
+        
     
     @Override
     public ArrayList constructPath() {
@@ -81,6 +92,10 @@ public class AStar extends AbstractPathfinder {
         path.reverse();
         return path;
     }
+    
+    /**
+     * initialize finds start and end point and initializes all other tiles to have maximum value in gscore, except start that has 0.
+     */
         
     @Override
     public void initialize() {        
@@ -102,11 +117,18 @@ public class AStar extends AbstractPathfinder {
         open.add(start);
     }
     
-    //maybe make heuristic into interface!?!?! lets see
+    /**
+     *
+     * @return Manhattan distance calculated with the formula
+     */
     public int manhattanDistance(Tile a, Tile b) {
         return (Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()));
     }
     
+    /**
+     *
+     * @return Euclidean Distance calculated with the formula.
+     */
     public int euclideanDistance(Tile a, Tile b) {
         return (int) (Math.sqrt(Math.pow((a.getX() - b.getX()), 2) + Math.pow((a.getY() - b.getY()), 2)));
     }

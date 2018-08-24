@@ -5,15 +5,16 @@
  */
 package north.pathfindingmazejava.logic;
 
+import org.junit.Test;
+
 /**
  *
  * @author northernpike
  */
 public class MazeTest {
-    Maze maze;
+    public Maze maze;
 
-    public MazeTest(Maze maze) {
-        this.maze = maze;
+    public MazeTest() {
     }
     
     

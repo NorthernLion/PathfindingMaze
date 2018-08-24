@@ -22,10 +22,11 @@ public class TextUi {
     }
     
     public String run() {
-        System.out.println("Welcome to the Maze");
-        System.out.println("You can edit the maze with mouse");
-        System.out.println("Right button will make a block, non traversable tile");
-        System.out.println("Left button once will set the starting location and twice the finishing location");
+        if (algorithm == null) {
+            System.out.println("You can edit the maze with mouse");
+            System.out.println("Right button will make a block, non traversable tile");
+            System.out.println("Left button once will set the starting location and twice the finishing location");            
+        }
         
         while (true) {
             System.out.println("Write 1 to change algorithm");

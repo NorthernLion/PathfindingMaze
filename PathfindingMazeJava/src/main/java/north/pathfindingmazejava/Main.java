@@ -12,6 +12,11 @@ import north.pathfindingmazejava.logic.Maze;
  * @author northernpike
  */
 public class Main {
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Maze maze = new Maze();
         maze.start();

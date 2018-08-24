@@ -45,6 +45,7 @@ public class GridTest {
     public void testGettingNeighborsWhenBlcoked() {        
         assertEquals(readyMade.getNeigboringTiles(readyMade.getGrid()[1][3]).get(0), readyMade.getGrid()[0][2]);
         assertEquals(readyMade.getNeigboringTiles(readyMade.getGrid()[1][3]).getSize(), 7);
+        assertEquals(readyMade.getNeigboringTiles(readyMade.getGrid()[9][9]).get(0), readyMade.getGrid()[8][8]);
     }
     
     @Test
@@ -82,6 +83,28 @@ public class GridTest {
         assertEquals(empty.setOneEnd(tile).get(0), settedend);
     }
     
+    @Test
+    public void testIfItHasStartTrue() {
+        empty.getGrid()[0][0].setStart(true);
+        assertEquals(true, empty.hasStart());
+    }
+    
+    @Test
+    public void testIfItHasEndTrue() {
+        empty.getGrid()[0][0].setEnd(true);
+        assertEquals(true, empty.hasEnd());
+    }
+    
+    @Test
+    public void testIfItHasNoEndFalse() {
+        assertEquals(false, empty.hasEnd());        
+    }
+    
+    @Test
+    public void testIfItHasNoStartFalse() {        
+        assertEquals(false, empty.hasStart());
+        
+    }
 
     
 

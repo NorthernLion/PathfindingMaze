@@ -1,21 +1,33 @@
 package north.pathfindingmazejava.datastructures;
 
+/**
+ *
+ * @author northernpike
+ * @param <K>
+ * @param <V>
+ */
 public class Entry<K, V> {
     private K key;
     private V value;
     private Entry<K, V> next;
 
+    /**
+     *
+     * @param key key where entry is found at.
+     * @param value value at the given key.
+     * @param next the Entry that is next.
+     */
     public Entry(K key, V value, Entry<K, V> next) {
         this.key = key;
         this.value = value;
         this.next = next;
     }
-
+    
     public K getKey() {
         return key;
     }
 
-    public Entry<K, V> getNext() {
+    Entry<K, V> getNext() {
         return next;
     }
 
@@ -23,17 +35,8 @@ public class Entry<K, V> {
         return value;
     }
 
-    public void setKey(K key) {
-        this.key = key;
-    }
-
     public void setNext(Entry<K, V> next) {
         this.next = next;
     }
-
-    public void setValue(V value) {
-        this.value = value;
-    }
-    
     
 }
