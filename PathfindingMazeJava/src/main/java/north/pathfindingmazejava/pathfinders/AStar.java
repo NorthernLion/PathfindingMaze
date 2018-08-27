@@ -18,21 +18,16 @@ import java.util.PriorityQueue;
  */
 public class AStar extends AbstractPathfinder {
     
-    private Grid grid;
+    
     private PriorityQueue<Tile> open; 
-    private HashMap<Tile, Tile> cameFrom;
-    private HashMap<Tile, Integer> gScore;
 
     /**
      *
      * @param grid
      */
     public AStar(Grid grid) {
-        super();
-        open = new PriorityQueue<>();
-        this.grid = grid;
-        this.cameFrom = new HashMap<>();    // The Tile it is most efficient to arrive to said Tile is saved here.
-        this.gScore = new HashMap<>();      // The distance from starting tile is saved here.
+        super(grid);
+        open = new PriorityQueue<>();        
     }
     
     
@@ -62,7 +57,7 @@ public class AStar extends AbstractPathfinder {
                 int cost = gScore.get(current) + 1;                             // 1 is the distance between every tile and gScore.get(current) is the distance of previous tile from start
                 int estimation = cost + this.manhattanDistance(neighbor, end);  // Heuristic is added to this value to estimate the "goodness" of the tile
                 
-                if (estimation > gScore.get(neighbor)) {                        // If lower estimation has been set at gscore before the path we are currently looking at is not better and we can continue
+                if (estimation >= gScore.get(neighbor)) {                        // If lower estimation has been set at gscore before the path we are currently looking at is not better and we can continue
                     continue;
                 }                
                 neighbor.setValue(estimation);

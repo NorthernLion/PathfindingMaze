@@ -50,11 +50,12 @@ public class UserInterface implements Runnable {
     //Thread.sleep(100)
     public void showVisited(ArrayList visited) {
         for (int i = 0; i < visited.getSize(); i++) {
+            System.out.println(visited.getSize());
             Tile current = (Tile) visited.get(i);
             squares[current.getX()][current.getY()].setBackground(Color.yellow);
             squares[current.getX()][current.getY()].setText("" + current.getValue());
             try {
-                Thread.sleep(10);
+                Thread.sleep(500);
             } catch (Exception e) {
             }            
         }        
@@ -65,7 +66,7 @@ public class UserInterface implements Runnable {
             Tile current = (Tile) path.get(i);
             squares[current.getX()][current.getY()].setBackground(Color.red);
             try {
-                Thread.sleep(100);
+                Thread.sleep(500);
             } catch (Exception e) {
             }            
         }        

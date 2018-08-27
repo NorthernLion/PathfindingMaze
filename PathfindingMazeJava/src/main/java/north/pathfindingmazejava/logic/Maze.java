@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 import north.pathfindingmazejava.gui.TextUi;
 import north.pathfindingmazejava.gui.UserInterface;
 import north.pathfindingmazejava.pathfinders.AStar;
+import north.pathfindingmazejava.pathfinders.Dijkstra;
 import north.pathfindingmazejava.pathfinders.PathFinder;
 
 /**
@@ -65,6 +66,8 @@ public class Maze {
         
         if (algorithm.equals("A*")) {
             pather = new AStar(grid);
+        } else if (algorithm.equals("Dijkstra")) {
+            pather = new Dijkstra(grid);
         }
         
         pather.initialize();

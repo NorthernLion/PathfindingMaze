@@ -1,6 +1,8 @@
 package north.pathfindingmazejava.pathfinders;
 
 import north.pathfindingmazejava.datastructures.ArrayList;
+import north.pathfindingmazejava.datastructures.HashMap;
+import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.logic.Tile;
 
 /*
@@ -19,12 +21,19 @@ public abstract class AbstractPathfinder implements PathFinder {
      * ArrayList that has all the visited aka evaluated Tiles.
      */
     public ArrayList<Tile> visited;
-
+    public Grid grid;
     public Tile end;
-    public Tile start;
+    public Tile start;    
+    public HashMap<Tile, Integer> gScore;
+    public HashMap<Tile, Tile> cameFrom;
 
-    public AbstractPathfinder() {
+    
+
+    public AbstractPathfinder(Grid grid) {
+        this.grid = grid;
         visited = new ArrayList<>();
+        this.gScore = new HashMap<>();      // The distance from starting tile is saved here.
+        this.cameFrom = new HashMap<>();    // The Tile it is most efficient to arrive to said Tile is saved here.
     }
 
     @Override

@@ -39,7 +39,7 @@ public class TextUi {
             
 
             if (answer.equals("1")) {
-                changeAlgorithm();
+                this.algorithm = changeAlgorithm();
             } else if (answer.equals("2")) {
                 System.out.println("TBD");
             } else if (answer.equals("start")) {
@@ -55,19 +55,25 @@ public class TextUi {
 
     }
     
-    public void changeAlgorithm() {
+    public String changeAlgorithm() {
         while (true) {
             System.out.println("Write exit to return previous menu");
             System.out.println("Write 1 to select A*");
+            System.out.println("Write 2 to select Dijkstra");
             System.out.println("____________________");
             System.out.println("");
             String answer = scanner.nextLine();
             if (answer.equals("exit")) { 
                 break;
             } else if (answer.equals("1")) {
-                this.algorithm = "A*";
+                System.out.println("A* has been selected");
+                return "A*";
+            } else if (answer.equals("2")) {
+                System.out.println("Dijkstra has been selected");
+                return "Dijkstra";
             }
-        }        
+        }
+        return null;
     }
     
     
