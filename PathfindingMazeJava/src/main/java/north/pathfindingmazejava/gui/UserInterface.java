@@ -55,7 +55,7 @@ public class UserInterface implements Runnable {
             squares[current.getX()][current.getY()].setBackground(Color.yellow);
             squares[current.getX()][current.getY()].setText("" + current.getValue());
             try {
-                Thread.sleep(500);
+                Thread.sleep(5);
             } catch (Exception e) {
             }            
         }        

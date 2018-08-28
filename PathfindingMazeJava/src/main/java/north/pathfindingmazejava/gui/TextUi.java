@@ -60,6 +60,7 @@ public class TextUi {
             System.out.println("Write exit to return previous menu");
             System.out.println("Write 1 to select A*");
             System.out.println("Write 2 to select Dijkstra");
+            System.out.println("Write 3 to select BFS");
             System.out.println("____________________");
             System.out.println("");
             String answer = scanner.nextLine();
@@ -71,6 +72,9 @@ public class TextUi {
             } else if (answer.equals("2")) {
                 System.out.println("Dijkstra has been selected");
                 return "Dijkstra";
+            } else if (answer.equals("3")) {
+                System.out.println("BFS has been selected");
+                return "BFS";
             }
         }
         return null;

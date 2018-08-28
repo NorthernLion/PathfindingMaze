@@ -31,7 +31,7 @@ public abstract class AbstractPathfinder implements PathFinder {
 
     public AbstractPathfinder(Grid grid) {
         this.grid = grid;
-        visited = new ArrayList<>();
+        this.visited = new ArrayList<>();
         this.gScore = new HashMap<>();      // The distance from starting tile is saved here.
         this.cameFrom = new HashMap<>();    // The Tile it is most efficient to arrive to said Tile is saved here.
     }
