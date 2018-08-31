@@ -10,3 +10,14 @@ Algoritmien testit ovat myös integraatiotestejä, koska niiden toiminnan mallin
 Ohjelmiston tehtävä on havainnollistaa ja testata eri algoritmien suorituskykyä sokkelossa. Tämän saavuttamiseksi ohjelmistossa on graaffinen käyttöliittymä, 
 joka esittää algoritmin toiminnan ensin värittämällä vieraillut palat ja sen jälkeen rakentamalla lopullisen algoritmin löytämän reitin.
 
+```
+It took 362936 nano seconds to solve manyPathGrid with A Star
+It took 231292 nano seconds to solve manyPathGrid with Dijkstra
+It took 133356 nano seconds to solve manyPathGrid with BFS
+It took 238838 nano seconds to solve onePathGrid with A Star
+It took 148630 nano seconds to solve onePathGrid with Dijkstra
+It took 101682 nano seconds to solve onePathGrid with BFS
+It took 96739 nano seconds to solve empty grid with A Star
+It took 314806 nano seconds to solve empty grid with Dijkstra
+It took 200119 nano seconds to solve empty grid with BFS
+```
