@@ -4,8 +4,6 @@ package north.pathfindingmazejava.pathfinders;
 import north.pathfindingmazejava.datastructures.ArrayList;
 import north.pathfindingmazejava.logic.Tile;
 import north.pathfindingmazejava.logic.Grid;
-import north.pathfindingmazejava.datastructures.HashMap;
-
 /**
  *
  * @author northernpike

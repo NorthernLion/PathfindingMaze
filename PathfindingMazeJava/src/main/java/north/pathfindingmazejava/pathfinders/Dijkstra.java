@@ -14,7 +14,7 @@ import north.pathfindingmazejava.logic.Tile;
  *
  * @author northernpike
  */
-public class Dijkstra extends AbstractPathfinder{
+public class Dijkstra extends AbstractPathfinder {
     
     private PriorityQueue<Tile> open;
 
@@ -43,7 +43,6 @@ public class Dijkstra extends AbstractPathfinder{
             ArrayList<Tile> neighbors = grid.getNeigboringTiles(current);
             
             for (int i = 0; i < neighbors.getSize(); i++) {
-                System.out.println(current);
                 Tile neighbor = (Tile) neighbors.get(i);
                 if (visited.contains(neighbor)) {                               //The Tile has alredy been visited
                     continue;

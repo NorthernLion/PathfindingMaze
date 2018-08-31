@@ -7,7 +7,6 @@ package north.pathfindingmazejava.pathfinders;
 
 import north.pathfindingmazejava.datastructures.ArrayList;
 import north.pathfindingmazejava.datastructures.FIFOQueue;
-import north.pathfindingmazejava.datastructures.HashMap;
 import north.pathfindingmazejava.logic.Grid;
 import north.pathfindingmazejava.logic.Tile;
 
@@ -15,7 +14,7 @@ import north.pathfindingmazejava.logic.Tile;
  *
  * @author northernpike
  */
-public class BFS extends AbstractPathfinder{
+public class BFS extends AbstractPathfinder {
     
     public FIFOQueue open;
 
@@ -36,6 +35,7 @@ public class BFS extends AbstractPathfinder{
                 if (current.isStart()) {
                     this.start = current;
                 }
+                current.setValue(1); // Graphical reasons
             }
         }
         open.enqueue(start);
@@ -44,12 +44,10 @@ public class BFS extends AbstractPathfinder{
 
     @Override
     public int find() {
-        visited.add(start);
-        while(!open.isEmpty()) {
+        while (!open.isEmpty()) {
             Tile current = (Tile) open.dequeue();
-            System.out.println("currently " + current);
             if (current.isEnd()) {
-                break;
+                return this.constructPath().getSize() - 1; // In order to 
             }
             
             ArrayList<Tile> neighbors = grid.getNeigboringTiles(current);
@@ -61,7 +59,9 @@ public class BFS extends AbstractPathfinder{
                 }
                 cameFrom.put(neighbor, current);
                 open.enqueue(neighbor);
-                visited.add(neighbor);
+                if (!neighbor.isStart()) {
+                    visited.add(neighbor);
+                }
             }
         }        
         return -1;

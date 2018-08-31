@@ -2,13 +2,13 @@ package north.pathfindingmazejava.gui;
 
 import java.awt.Color;
 import north.pathfindingmazejava.logic.Grid;
-import north.pathfindingmazejava.logic.Maze;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import north.pathfindingmazejava.datastructures.ArrayList;
 import north.pathfindingmazejava.logic.Tile;
@@ -19,8 +19,8 @@ public class UserInterface implements Runnable {
     private Grid grid;
     private JButton[][] squares;
 
-    public UserInterface(Maze maze) {
-        this.grid = maze.getGrid();
+    public UserInterface(Grid grid) {
+        this.grid = grid;
         this.squares = new JButton[grid.getSize()][grid.getSize()];
     }
 
@@ -44,13 +44,23 @@ public class UserInterface implements Runnable {
                 squares[x][y] = button;
                 button.addMouseListener(new ButtonMouseListener(x, y, squares, grid));
                 container.add(button);
+                if (grid.getGrid()[x][y].isBlocked()) {
+                    button.setText("B");
+                } else if (grid.getGrid()[x][y].isEnd()) {
+                    button.setText("F");
+                } else if (grid.getGrid()[x][y].isStart()) {
+                    button.setText("S");
+                }
             }
         }
     }
-    //Thread.sleep(100)
+    
+    public void showInformation(Long time, int steps, int visited) {
+        JOptionPane.showMessageDialog(null, "It took " + time + "nano seconds to run the algorithm. " + visited + " tiles were visited by the algorithm and the correct path is " + steps + " long.");        
+    }
+    
     public void showVisited(ArrayList visited) {
         for (int i = 0; i < visited.getSize(); i++) {
-            System.out.println(visited.getSize());
             Tile current = (Tile) visited.get(i);
             squares[current.getX()][current.getY()].setBackground(Color.yellow);
             squares[current.getX()][current.getY()].setText("" + current.getValue());
@@ -76,4 +86,10 @@ public class UserInterface implements Runnable {
     public void close() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
+
+    public Grid getGrid() {
+        return grid;
+    }
+    
+    
 }

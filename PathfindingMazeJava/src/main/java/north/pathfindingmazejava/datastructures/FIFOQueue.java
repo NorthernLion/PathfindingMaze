@@ -17,7 +17,7 @@ public class FIFOQueue {
     private int size;
 
     public FIFOQueue() {
-        this.size= 100; //We happen to need 100 size in running of BFS.
+        this.size = 100; //We happen to need 100 size in running of BFS.
         this.queue = new Object[size];
         head = 0;
         tail = 0;

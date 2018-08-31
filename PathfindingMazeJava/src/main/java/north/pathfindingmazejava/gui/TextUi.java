@@ -30,9 +30,8 @@ public class TextUi {
         
         while (true) {
             System.out.println("Write 1 to change algorithm");
-            System.out.println("Write 2 to change heuristic --- TBD");
             System.out.println("Write 'start' to start the program");
-            System.out.println("Write 'reset' to reset the field");
+            System.out.println("Write 'exit' to exit the program");
             System.out.println("____________________");
             System.out.println("");
             String answer = scanner.nextLine();
@@ -40,16 +39,14 @@ public class TextUi {
 
             if (answer.equals("1")) {
                 this.algorithm = changeAlgorithm();
-            } else if (answer.equals("2")) {
-                System.out.println("TBD");
             } else if (answer.equals("start")) {
                 if (algorithm == null) {
                     System.out.println("you must select algorithm first");
                 } else {
                     return algorithm;
                 }                
-            } else if (answer.equals("reset")) {
-                System.out.println("reset the TBD");
+            } else if (answer.equals("exit")) {
+                return "AborthTheMission";
             }            
         }
 
